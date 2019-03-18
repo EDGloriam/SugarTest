@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/all.css">
+    <title>Tires</title>
+</head>
+<body>
+    <div class="tires-filter-container">
+        <h2 class="filter-title">Шины</h2>
+        <div class="filter-body">
+            <div class="car-type">
+                    <label>
+                        <input type="radio" name="car-type" value="all" checked>
+                        <span>Все</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="car-type" value="light">
+                        <span>Легковые</span>
+                    </label> 
+                    <label>
+                        <input type="radio" name="car-type" value="jeep">
+                        <span>Джипы</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="car-type" value="heavy">
+                        <span>Грузовые</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="car-type" value="moto">
+                        <span>Мото</span>
+                    </label>  
+                    <label>
+                        <input type="radio" name="car-type" value="minibus">
+                        <span>Микроавтобусы</span>
+                    </label>                  
+            </div>
+            <div class="tires-params">
+                <div class="radius">
+                    <div class="image-container">
+                        <img src="../img/r.jpg" alt="radius">
+                    </div>
+                    <div class="select-container">
+                        <p class="caption">Радиус</p>
+                        <select name="radius">
+                            <option value="">Любой</option>
+                            <option value="15">R15</option>
+                            <option value="18">R18</option>
+                            <option value="22,5">R22,5</option>
+                            <option value="30">R30</option>
+                        </select>
+                    </div>   
+                </div>
+                <div class="width">
+                    <div class="image-container">
+                        <img src="../img/w.jpg" alt="width">
+                    </div>
+                    <div class="select-container">
+                        <p class="caption">Ширина</p>
+                        <select name="width">
+                            <option value="">Любая</option>
+                            <option value="165">165</option>
+                            <option value="185">185</option>
+                            <option value="205">205</option>
+                            <option value="215">215</option>
+                            <option value="275">275</option>
+                            <option value="285">285</option>
+                        </select>
+                    </div>       
+                </div>
+                <div class="height">
+                    <div class="image-container">
+                        <img src="../img/h.jpg" alt="height">
+                    </div>
+                    <div class="select-container">
+                        <p class="caption">Высота</p>
+                        <select name="height">
+                            <option value="">Любая</option>
+                            <option value="165">40</option>
+                            <option value="185">45</option>
+                            <option value="205">50</option>
+                            <option value="215">60</option>
+                            <option value="275">65</option>
+                            <option value="285">70</option>
+                        </select>
+                    </div>       
+                </div>
+            </div>
+            <div class="season-and-brand-container">
+                <div class="season">
+                        <p class="caption">Сезон</p>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="season" value="summer" checked>
+                                <span></span>
+                            </label>
+                            <label>
+                                <input type="radio" name="season" value="winter">
+                                <span></span>
+                            </label> 
+                            <label>
+                                <input type="radio" name="season" value="universal">
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="brand">
+                        <p class="caption">Производитель</p>
+                        <select name="brand">
+                            <option value="continental">Continental</option>
+                            <option value="michelin ">Michelin </option>
+                            <option value="goodyear ">Goodyear </option>
+                            <option value="bridgestone ">Bridgestone </option>
+                            <option value="nokian  ">Nokian  </option>
+                            <option value="hankook ">Hankook </option>
+                            <option value="Kama">Кама</option>
+                            <option value="Rosava">Росава </option>
+                        </select>
+                    </div>
+            </div>
+            <div class="price">
+                <p class="caption">Цена в гривнах</p>
+                <div class="slider-range-container">
+                    <!-- <p>
+                        <label for="amount">Price range:</label>
+                        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                    </p> -->
+                    <span id="min-price">536</span>
+                    <div id="slider-range"></div>
+                    <span id="max-price">10000</span>
+                </div>
+            </div>
+            <button type="submit">Подобрать</button>
+        </div>
+    </div>
+<script src="./js/all.js"></script>
+</body>
+</html>

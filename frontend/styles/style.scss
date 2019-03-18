@@ -1,0 +1,193 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+}
+*{
+	box-sizing: border-box;
+}
+
+/* =============================================G L O B A L */
+$light-blue: #65C1BC;
+$grey: #C7C6C7;
+$orange: #FB5426;
+$px5: 5px;
+body{
+	background-image: url("../img/bg.jpg")
+}
+.tires-filter-container{
+	font-family: sans-serif;
+	width: fit-content;
+	border-bottom: 3px solid $orange;
+	h2{
+		color: #fff;
+		text-align: center;
+		font-weight: bold;
+		font-size: 1.4em;
+		font-style: italic;
+		text-transform: uppercase;
+
+	}
+	input[type="radio"]{
+		display: none;
+	}
+	label:hover{
+		cursor: pointer;
+	}
+	.filter-body{
+		padding: 15px;
+		padding-top: 25px;
+		background: #fff;
+		.car-type{
+			display: flex;
+			margin-bottom: 15px;
+			input[type="radio"] + span { 
+				background: none; 
+				border-bottom: 1px dashed $light-blue;
+				color: $light-blue;
+			}
+			input[type="radio"]:checked + span { 
+				background: $light-blue; 
+				border: none;
+				padding: 5px 15px;
+				border-radius: 20px;
+				color: #fff;
+			}
+			label + label{
+				margin-left: 10px;
+			}
+		}
+		.tires-params{
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 30px;
+			.image-container{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 70px;
+				margin-bottom: 5px;
+			}
+			select{
+				width: 120px;
+				border: 2px solid $grey;
+				border-radius: $px5;
+				padding: 10px;
+				&:focus,
+				&:active{
+					outline: none;
+				}
+			}
+		}
+		.season-and-brand-container{
+			display: flex;
+			justify-content: space-between;
+		}
+		.season{
+			.caption{
+				display: block;
+			}
+			.radio-group{
+				display: flex;
+				label + label{
+					margin-left: 30px;
+				}
+				span{
+					display: block;
+					width: 40px;
+					height: 40px;
+					background-repeat: no-repeat;
+					background-position: center;
+				}
+				input[value="summer"] + span{
+					background-image: url("../img/seasons/sun_def.jpg")
+				}
+				input[value="winter"] + span{
+					background-image: url("../img/seasons/snow_def.jpg")
+				}
+				input[value="universal"] + span{
+					background-image: url("../img/seasons/sun_snow_def.jpg")
+				}
+				input[type="radio"]:checked + span { 
+					border: 3px solid $grey;
+					border-radius: $px5;
+				}
+				input[value="summer"]:checked + span {
+					background-image: url("../img/seasons/hover/sun.jpg");
+				}
+				input[value="winter"]:checked + span {
+					background-image: url("../img/seasons/hover/snow.jpg");
+				}
+				input[value="universal"]:checked + span {
+					background-image: url("../img/seasons/hover/sun_snow.jpg");
+				}
+			}
+		}
+		.brand{
+			justify-self: flex-end;
+		}
+		.price{
+			margin-top: 30px;
+			margin-bottom: 30px;
+			.caption{
+				margin-bottom: 5px;
+			}
+			#slider-range{
+				background: $grey;
+				height: 10px;
+				width: 100%;
+				margin: 0 15px;
+			}
+			.ui-slider-range{
+				height: 10px;
+				background: $light-blue;
+			}
+			.slider-range-container{
+				display: flex;
+				align-items: center;
+			}
+			#min-price,
+			#max-price{
+				border: 1px solid $grey;
+				padding: 5px 10px;
+				border-radius: $px5;
+				min-width: 58px;
+				text-align: center;
+			}
+		}
+		button{
+			color: #fff;
+			text-transform: uppercase;
+			background: $orange;
+			padding: 10px 20px;
+			border-radius: $px5;
+			border: none;
+			margin: 0 auto;
+			display: block;
+			margin-bottom: 25px;
+		}
+	}
+}
