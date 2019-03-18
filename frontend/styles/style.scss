@@ -1,3 +1,6 @@
+
+@import 'variables';
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -27,18 +30,83 @@ ol, ul {
 	list-style: none;
 }
 *{
-	box-sizing: border-box;
+    box-sizing: border-box;
+    &:focus{
+        outline-color: transparent;
+    }
 }
 
-/* =============================================G L O B A L */
-$light-blue: #65C1BC;
-$grey: #C7C6C7;
-$orange: #FB5426;
-$px5: 5px;
 body{
 	background-image: url("../img/bg.jpg")
 }
 .tires-filter-container{
+	margin: auto;
+	color: $defaultFontColor;
+	font-size: 14px;
+    .caption{
+        margin-bottom: 3px;
+    }
+	// ===============================================
+	// https://www.w3schools.com/howto/howto_custom_select.asp
+	// ===============================================
+	.custom-select {
+		position: relative;
+	}
+	.custom-select select {
+		display: none;
+	}
+	.select-selected {
+		border: 2px solid $light-grey;
+        border-radius: $px5;
+        position: relative;
+	}
+	.select-selected:after {
+		position: absolute;
+		background-color: $light-grey;
+		background-image: url('../img/ico/angle-down.jpg');
+		background-position: center;
+		background-repeat: no-repeat;
+		color: #655e66;
+        display: block;
+        border-bottom-right-radius: $px5;
+		border-top-right-radius: $px5;
+		content: "";
+		top: 0px;
+        right: -2px;
+		width: 35px;
+		height: 34px;
+	}
+	.select-selected.select-arrow-active{
+		border-bottom-left-radius: initial;
+		border-bottom-right-radius: initial;
+	}
+	.select-selected.select-arrow-active:after {
+		background-image: url('../img/ico/angle-up.jpg');
+	}
+	.select-items div,.select-selected {
+		padding: 8px 13px;
+		cursor: pointer;
+	}
+	.select-items {
+		position: absolute;
+		border: 2px solid $grey;
+		border-bottom-left-radius: $px5;
+		border-bottom-right-radius: $px5;
+		border-top: none;
+		background: #fff;
+		top: 100%;
+		left: 0;
+		right: 0;
+		z-index: 99;
+	}
+	.select-hide {
+		display: none;
+	}
+	.select-items div:hover, .same-as-selected {
+		background-color: rgba(0, 0, 0, 0.1);
+	}
+	// ===============================================
+	// ===============================================
 	font-family: sans-serif;
 	width: fit-content;
 	border-bottom: 3px solid $orange;
@@ -58,14 +126,15 @@ body{
 		cursor: pointer;
 	}
 	.filter-body{
-		padding: 15px;
+		padding: 27px 16px;
 		padding-top: 25px;
 		background: #fff;
 		.car-type{
 			display: flex;
-			margin-bottom: 15px;
+			margin-bottom: 30px;
 			input[type="radio"] + span { 
 				background: none; 
+				padding: 5px;
 				border-bottom: 1px dashed $light-blue;
 				color: $light-blue;
 			}
@@ -83,23 +152,24 @@ body{
 		.tires-params{
 			display: flex;
 			justify-content: space-between;
-			margin-bottom: 30px;
+			margin-bottom: 27px;
+			& > div{
+				width: calc((100% - 30px) / 3);
+            }
 			.image-container{
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				height: 70px;
 				margin-bottom: 5px;
-			}
-			select{
-				width: 120px;
-				border: 2px solid $grey;
-				border-radius: $px5;
-				padding: 10px;
-				&:focus,
-				&:active{
-					outline: none;
+				img{
+					height: 100%;
 				}
+			}
+			.width .image-container img{
+				height: 126%;
+				position: relative;
+				top: -8px;
 			}
 		}
 		.season-and-brand-container{
@@ -132,7 +202,7 @@ body{
 					background-image: url("../img/seasons/sun_snow_def.jpg")
 				}
 				input[type="radio"]:checked + span { 
-					border: 3px solid $grey;
+					border: 3px solid $light-grey;
 					border-radius: $px5;
 				}
 				input[value="summer"]:checked + span {
@@ -148,46 +218,76 @@ body{
 		}
 		.brand{
 			justify-self: flex-end;
+            width: 50%;
+            .select-items{
+                top: 94%;
+            }
 		}
 		.price{
-			margin-top: 30px;
-			margin-bottom: 30px;
+			margin-top: 21px;
+			margin-bottom: 15px;
 			.caption{
 				margin-bottom: 5px;
-			}
-			#slider-range{
-				background: $grey;
-				height: 10px;
-				width: 100%;
-				margin: 0 15px;
-			}
-			.ui-slider-range{
-				height: 10px;
-				background: $light-blue;
-			}
-			.slider-range-container{
-				display: flex;
-				align-items: center;
-			}
+			}			
 			#min-price,
 			#max-price{
-				border: 1px solid $grey;
+				border: 2px solid $grey;
 				padding: 5px 10px;
 				border-radius: $px5;
-				min-width: 58px;
+				min-width: 65px;
 				text-align: center;
 			}
 		}
-		button{
-			color: #fff;
-			text-transform: uppercase;
-			background: $orange;
-			padding: 10px 20px;
-			border-radius: $px5;
-			border: none;
+		.result-container{
+			position: relative;
+			width: fit-content;
 			margin: 0 auto;
-			display: block;
-			margin-bottom: 25px;
+				display: block;
+			button{
+				color: #fff;
+				text-transform: uppercase;
+				background: $orange;
+				padding: 10px 26px;
+				border-radius: $px5;
+				border: none;
+				&:hover{
+					cursor: pointer;
+                }
+                &:active{
+                   box-shadow: inset 0 0 6px 0 #000;;
+                }
+			}
+			#was-finded{
+                display: none;
+				position: absolute;
+				top: 0;
+				right: -95px;
+				border: 2px solid $grey;
+				border-radius: 5px;
+				width: 80px;				
+				p{
+					padding: 4px;
+					font-size: 11px;
+                }
+                &.show{
+                    display: block;
+                }
+				&:before{
+					display: block;
+					content: '';
+					position: absolute;
+					left: -8px;
+					top: 9px;
+					transform: rotate(45deg);
+					border-left: 2px solid $grey;
+					border-bottom: 2px solid $grey;
+					width: 11px;
+					height: 11px;
+					z-index: 1;
+					background: #fff;
+				}
+			}
 		}
+		
 	}
 }

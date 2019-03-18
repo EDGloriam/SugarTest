@@ -7,6 +7,9 @@ const concat = require('gulp-concat');
 const gulpIf = require('gulp-if');
 const sourcemaps = require('gulp-sourcemaps');
 const del = require('del');
+const cssmin = require('gulp-cssmin');
+const rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
 
@@ -24,6 +27,8 @@ gulp.task('styles', function(){
         .pipe(concat('all.css'))
         .pipe(autoprefixer('last 2 versions'))
         .pipe(gulpIf(isDevMode, sourcemaps.write()))
+        .pipe(cssmin())
+        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('public/css'));
 });
 
@@ -36,12 +41,16 @@ gulp.task('script', function() {
     return gulp.src([
             'frontend/js/jquery.js', 
             'frontend/js/jquery-ui.min.js', 
+            'frontend/js/custom-select.js',
+            'frontend/js/db.js',
             'frontend/js/main.js'
         ])
         .pipe(babel({
             presets: ['@babel/env']
         }))
         .pipe(concat('all.js'))
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('public/js'))
 });
 

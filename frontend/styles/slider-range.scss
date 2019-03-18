@@ -1,0 +1,54 @@
+@import 'variables';
+
+.price{
+    #slider-range{
+        background: $light-grey;
+        height: 10px;
+        width: 100%;
+        margin: 0 15px;
+    }
+    .ui-slider {
+        position: relative;
+    }
+    .ui-slider-horizontal .ui-slider-handle {
+        top: -.3em;
+        margin-left: -0.7em;
+    }
+    .ui-slider .ui-slider-handle{
+        position: absolute;
+        touch-action: none;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ababab;
+        background: $light-grey;
+        z-index: 1;
+        cursor: pointer;
+        &:focus{
+            outline-color: transparent;
+        }
+    }
+    .ui-slider-horizontal .ui-slider-range {
+        top: 0;
+        height: 100%;
+    }
+    .ui-slider .ui-slider-range {
+        position: absolute;
+        z-index: 1;
+        font-size: .7em;
+        display: block;
+        border: 0;
+        background-position: 0 0;
+    }
+    .ui-widget.ui-widget-content {
+        border: $light-blue;
+    }
+    .ui-widget-header{
+        height: 10px;
+        background: $light-blue;
+    }
+    .slider-range-container{
+        display: flex;
+        align-items: center;
+    }
+}
