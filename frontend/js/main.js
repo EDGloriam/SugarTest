@@ -14,7 +14,6 @@ $( function() {
   });
 
   $("#find-tires-btn").mousedown(function(){
-      console.log()
     resultContainer.toggleClass("show");
   });
 
